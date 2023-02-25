@@ -2,8 +2,11 @@
 let movieNameRef = document.getElementById("movie-name");
 let searchBtn = document.getElementById("search-btn");
 let result = document.getElementById("result");
+const input = document.querySelector("#movie-name");
 
 //function to fetch data from api
+input.value = "";
+
 let getMovie = () => {
   let movieName = movieNameRef.value;
   let url = `http://www.omdbapi.com/?t=${movieName}&apikey=${key}`;
@@ -32,26 +35,28 @@ let getMovie = () => {
         //if movie exists in database
         if (data.Response == "True") {
           result.innerHTML = `
-                    <div class="info>
-                        <img src =${data.Poster} class="poster ,
+                    <div class="info">
+                        <img src =${data.Poster} class="poster" />
                         <div>
                             <h2> ${data.Title}</h2>
                             <div class="rating">
                                 <img src="comp/star.png">
                                 <h4>${data.imdbRating}</h4>
                             </div>
-                            <div class=""details>
+                            <div class="details">
                                 <span>${data.Rated}</span>
                                 <span>${data.Year}</span>
                                 <span>${data.Runtine}</span>
                             </div>
                             <div class="genre">
                                 <div>
-                                    ${data.Genre.split(",").join("<div></div>")}
+                                    ${data.Genre.split(",").join(
+                                      " <div></div>"
+                                    )}
                                 </div>
                             </div>
                         </div>
-                        </div>
+                    </div>
                         <h3>Plot:</h3>
                         <p>${data.Plot}</p>
                         <h3>Cast:</h3>
@@ -68,7 +73,8 @@ let getMovie = () => {
         result.innerHTML = `<h3 class="msg">Error Occured</h3>`;
       });
   }
+  input.value = "";
 };
 
 searchBtn.addEventListener("click", getMovie);
-window.addEventListener("load", getMovie);
+// window.addEventListener("load", getMovie);

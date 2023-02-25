@@ -111,6 +111,7 @@ h2 {
 }
 
 .genre div {
+  display: flex;
   border: 1px solid #a0a0a0;
   font-size: 0.75em;
   padding: 0.4em 1.6em;
@@ -149,4 +150,8 @@ p {
     width: auto;
     max-height: 10.8em;
   }
+}
+
+div:empty {
+  border: none;
 }
