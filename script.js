@@ -21,17 +21,6 @@ let getMovie = () => {
     fetch(url)
       .then((resp) => resp.json())
       .then((data) => {
-        console.log(data);
-        console.log(data.Poster);
-        console.log(data.Title);
-        console.log(data.imdbRating);
-        console.log(data.Rated);
-        console.log(data.Year);
-        console.log(data.Runtine);
-        console.log(data.Genre);
-        console.log(data.Plot);
-        console.log(data.Actors);
-
         //if movie exists in database
         if (data.Response == "True") {
           result.innerHTML = `
